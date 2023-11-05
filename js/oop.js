@@ -73,6 +73,51 @@ console.log(anotherCar.brand);
     single, double, or triple patty, 
     Pickles, hot peppers, olives etc.
 */
+function Hamburger(options) {
+    this.bunType = options.bunType || 'standard';
+    this.garnishes = options.garnishes || [];
+    this.cheeseTypes = options.cheeseTypes || [];
+    this.sauces = options.sauces || [];
+    this.pattyType = options.pattyType || 'beef';
+    this.pattyCount = options.pattyCount || 1;
+    this.extras = options.extras || [];
+}
+
+Hamburger.prototype.describe = function () {
+    let description = `Order Details: This is a ${this.pattyCount} patty ${this.pattyType} hamburger on a ${this.bunType} bun `;
+
+    if (this.garnishes.length > 0) {
+        description += `with veggies including ${this.garnishes.join(', ')} `;
+    }
+
+    if (this.cheeseTypes.length > 0) {
+        description += `and ${this.cheeseTypes.join(', ')} cheese `;
+    }
+
+    if (this.sauces.length > 0) {
+        description += `topped with ${this.sauces.join(', ')} sauce `;
+    }
+
+    if (this.extras.length > 0) {
+        description += `and extras including ${this.extras.join(', ')}.`;
+    }
+
+    description += ' Thank You for ordering, Enjoy your meal :)';
+    return description;
+};
+
+var myHamburger = new Hamburger({
+    bunType: 'sesame-seeds',
+    garnishes: ['lettuce', 'tomato', 'onion'],
+    cheeseTypes: ['regular'],
+    sauces: ['mayo', 'mustard','chipotle'],
+    pattyType: 'beef',
+    pattyCount: 1,
+    extras: ['pickles', 'olives','jalapeno'],
+});
+
+console.log(myHamburger.describe());
+output2.textContent = myHamburger.describe();
 // add some extra if you want
 // Make sure that the function allows for the output of a sentence that describes the hamburger, too
 
